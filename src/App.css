@@ -1,6 +1,7 @@
 /*
-Global styling and
+Global styling,
 Styling for Big Calendar module
+and booking form calendar
 */
 
 input:-webkit-autofill,
@@ -8,18 +9,6 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
-
-.text-fields {
-  -webkit-text-fill-color: #478181;
-}
-
-.rotate-arrow {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
 }
 
 .rbc-event {
@@ -119,7 +108,7 @@ input:-webkit-autofill:active {
 }
 
 .s-alert-box {
-  z-index: 5000000;
+  z-index: 2;
 }
 
 .rbc-event-label {
@@ -159,18 +148,14 @@ input:-webkit-autofill:active {
   color: #478181 !important;
 }
 
-.react-text-field > div::before {
-  border-bottom: none !important;
+.text-fields {
+  -webkit-text-fill-color: #478181;
 }
 
-.react-select-root > div {
-  display: flex;
-  flex-grow: 1;
-  width: auto;
-}
-
-.SideBarForContent div:first-child {
-  left: auto !important;
-  z-index: 1 !important;
-  box-shadow: none !important;
+.rotate-arrow {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
