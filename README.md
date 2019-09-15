@@ -1,10 +1,10 @@
 ### Booking App Demo
 
+https://nataze.github.io/BookingAppDemo/
+
 This demo was extracted from a much larger application that allows client to book their services and sends out a call or SMS reminder using the twilio.
 
 It contains just a multi-step form that collects the clients information and booking time. All the data and api response are mocked in this demo.
-
-The main philosophy while creating the form was reusability, since the original app contains a lot of forms.
 
 #### Technology Stack
 
