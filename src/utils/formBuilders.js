@@ -1,9 +1,4 @@
-export const newFormState = fieldsObject => {
-  // fields = [{ field: "reminderPreferences", fieldType: "multipleCheckbox", checkBoxOptions: [sms,], isRequired: true }]
-  return generateFormState(fieldsObject);
-};
-
-export const newMutliFormState = (schema, options = {}) => {
+export const newMutliStepFormState = (schema, options = {}) => {
   const result = {
     form: {},
     errors: {}
@@ -15,9 +10,19 @@ export const newMutliFormState = (schema, options = {}) => {
     result["errors"][step] = stepResult["errors"];
 
     // add default start time for booking form
-    if (options.startTime && Number(step) === 3) {
+    if (options.startTime && Number(step) === 2) {
       result["form"][step]["startTime"] = options.startTime;
     }
+  });
+
+  return result;
+};
+
+export const buildMultiStepFormFields = fieldsObject => {
+  const result = {};
+
+  Object.keys(fieldsObject).forEach(step => {
+    result[step] = generateFormFields(fieldsObject[step]);
   });
 
   return result;
@@ -32,35 +37,17 @@ const generateFormState = fieldsObject => {
   fieldsObject.forEach(obj => {
     const fieldType = obj.fieldType;
     const fieldName = obj.name;
-    const fieldNames = obj.names;
-    if (fieldName) {
-      switch (fieldType) {
-        case "multipleCheckbox":
-          result["form"][fieldName] = boolField(obj, []);
-          break;
-        case "select":
-          result["form"][fieldName] = "";
-          break;
-        case "number":
-          result["form"][fieldName] = 0;
-          break;
-        default:
-          // default field type is text
-          result["form"][fieldName] = "";
-          break;
-      }
-    } else if (fieldNames) {
-      // right now only timeRange has this
-      // might change in the future
-      switch (fieldType) {
-        case "timeRange":
-          fieldNames.forEach(name => {
-            result["form"][name] = "";
-          });
-          break;
-        default:
-        // nothing for now
-      }
+
+    switch (fieldType) {
+      case "multipleCheckbox":
+        result["form"][fieldName] = generateReminderField(obj);
+        break;
+      case "number":
+        result["form"][fieldName] = 0;
+        break;
+      default:
+        result["form"][fieldName] = "";
+        break;
     }
   });
 
@@ -69,34 +56,20 @@ const generateFormState = fieldsObject => {
   return result;
 };
 
-export const buildMultiFormFields = fieldsObject => {
-  const result = {};
-
-  Object.keys(fieldsObject).forEach(step => {
-    result[step] = generateFormFields(fieldsObject[step]);
-  });
-
-  return result;
-};
-
-export const buildFormFields = fieldsObject => {
-  return generateFormFields(fieldsObject);
-};
-
 const generateFormFields = fieldsObject => {
   // mainly to remove dynamic fields
   const result = [];
   fieldsObject.forEach(obj => {
-    if (!obj.isDynamic && !obj.isHidden && !(obj.name === "serviceType")) {
+    if (!obj.isHidden) {
       result.push(obj);
     }
   });
   return result;
 };
 
-const boolField = obj => {
-  let result = {};
-  obj.checkboxOptions.forEach((option, i) => {
+const generateReminderField = obj => {
+  const result = {};
+  obj.checkboxOptions.forEach(option => {
     if (option === "sms") {
       return (result[option] = true);
     }

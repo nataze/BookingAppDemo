@@ -60,17 +60,24 @@ export const removeElements = (object, keysToDelete) => {
 };
 
 export const camelToUnderscoreKey = key => {
-  // converts a single key/string from camel to underscore
-  return key.replace(/([A-Z])/g, "_$1").toLowerCase();
+  return key ? key.replace(/([A-Z])/g, "_$1").toLowerCase() : "";
 };
 
 export const underscoreToCamelKey = key => {
-  // converts a single key from underscore to camel
-  return key.replace(/(_\w)/g, m => m[1].toUpperCase());
+  return key ? key.replace(/(_\w)/g, m => m[1].toUpperCase()) : "";
 };
 
 export const capitalize = word => {
   return word ? word.charAt(0).toUpperCase() + word.slice(1) : "";
+};
+
+export const camelToSentence = word => {
+  if (word) {
+    const result = word.replace(/([A-Z])/g, " $1");
+    return result.charAt(0).toUpperCase() + result.slice(1);
+  } else {
+    return "";
+  }
 };
 
 export const clone = obj => {

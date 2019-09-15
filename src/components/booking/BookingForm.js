@@ -15,8 +15,8 @@ import FormField from "../../components/formElements/FormField";
 import BookingUtil from "../../utils/bookingHelper";
 
 import {
-  buildMultiFormFields,
-  newMutliFormState
+  buildMultiStepFormFields,
+  newMutliStepFormState
 } from "../../utils/formBuilders";
 import { clone } from "../../utils/helpers";
 
@@ -27,11 +27,11 @@ class BookingForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.formFields = buildMultiFormFields(props.schema);
+    this.formFields = buildMultiStepFormFields(props.schema);
 
     const startTime = props.startTime ? moment(props.startTime) : moment();
 
-    const formState = newMutliFormState(props.schema, { startTime });
+    const formState = newMutliStepFormState(props.schema, { startTime });
 
     this.noErrors = clone(formState.errors);
     this.noErrorState = clone(formState.errors);
@@ -41,7 +41,10 @@ class BookingForm extends React.Component {
       2: "Step 2: Date & Time"
     };
 
-    props.setState({
+    this.firstStep = 1;
+    this.lastStep = 2;
+
+    props.addToState({
       form: formState.form,
       errors: clone(formState.errors)
     });
@@ -66,7 +69,7 @@ class BookingForm extends React.Component {
 
   handleNext = () => {
     const { currentStep, updateField, updateObject } = this.props;
-    if (currentStep < 2) {
+    if (currentStep < this.lastStep) {
       const nextStep = currentStep + 1;
       updateField({ key: "currentStep", value: nextStep });
       updateObject({ key: "errors", value: clone(this.noErrors) });
@@ -120,8 +123,6 @@ class BookingForm extends React.Component {
 
   render() {
     const { stepHeader } = this.state;
-    const firstStep = 1;
-    const lastStep = 2;
 
     const { classes, currentStep, form, errors } = this.props;
 
@@ -130,7 +131,7 @@ class BookingForm extends React.Component {
     return (
       <div className={classes.container}>
         <div>
-          {currentStep === firstStep ? (
+          {currentStep === this.firstStep ? (
             <div className={classes.header}>NEW BOOKING</div>
           ) : (
             <div onClick={this.handleBack} className={classes.navigation}>
@@ -169,8 +170,8 @@ class BookingForm extends React.Component {
         </div>
 
         <div onClick={this.validateCurrentStep} className={classes.navigation}>
-          {currentStep === lastStep ? "CREATE BOOKING" : "NEXT"}
-          {currentStep < lastStep && <ArrowForwardIcon />}
+          {currentStep === this.lastStep ? "CREATE BOOKING" : "NEXT"}
+          {currentStep < this.lastStep && <ArrowForwardIcon />}
         </div>
       </div>
     );
@@ -192,7 +193,7 @@ const mapDispatchToProps = dispatch => {
     fetchEmployees: () => dispatch.employees.fetchEmployees(),
     updateField: payload => dispatch.bookingForm.update(payload),
     updateObject: payload => dispatch.bookingForm.updateObject(payload),
-    setState: payload => dispatch.bookingForm.add(payload)
+    addToState: payload => dispatch.bookingForm.add(payload)
   };
 };
 

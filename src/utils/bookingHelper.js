@@ -5,7 +5,7 @@ import { bookingFormValidations } from "../siteFormValidations";
 
 class BookingUtil {
   static validateForm(form, errors) {
-    return validateForm(form, errors, bookingFormValidations);
+    return validateForm(form, errors, bookingFormValidations, ["startTime"]);
   }
 
   static updateForm(event, name, form, currentStep) {
