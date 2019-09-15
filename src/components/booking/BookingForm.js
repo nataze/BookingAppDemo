@@ -190,7 +190,7 @@ const mapStateToProps = ({ bookingForm, employees }) => ({
 const mapDispatchToProps = dispatch => {
   return {
     fetchEmployees: () => dispatch.employees.fetchEmployees(),
-    updateField: payload => dispatch.bookingForm.updateField(payload),
+    updateField: payload => dispatch.bookingForm.update(payload),
     updateObject: payload => dispatch.bookingForm.updateObject(payload),
     setState: payload => dispatch.bookingForm.add(payload)
   };
