@@ -6,6 +6,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
 
+import NoReminder from "./noReminder";
+
 import { withStyles } from "@material-ui/core/styles";
 
 import styles from "./styles";
@@ -13,7 +15,6 @@ import styles from "./styles";
 export const CheckboxField = ({
   labelName,
   name,
-  value,
   onChange,
   error,
   checkboxOptions,
@@ -55,29 +56,7 @@ export const CheckboxField = ({
             );
           })}
           {name === "reminderPreferences" && (
-            <div className={classes.noReminder}>
-              <div className={classes.or}>OR</div>
-              <FormControlLabel
-                classes={{
-                  label: classes.formLabel
-                }}
-                control={
-                  <Checkbox
-                    className={classes.checkbox}
-                    data-parent={name}
-                    type="checkbox"
-                    name="noReminder"
-                    value=""
-                    classes={{
-                      root: classes.root,
-                      checked: classes.checked
-                    }}
-                    onChange={onChange}
-                  />
-                }
-                label="No Reminder"
-              />
-            </div>
+            <NoReminder name={name} onChange={onChange} />
           )}
         </FormGroup>
         {error && (

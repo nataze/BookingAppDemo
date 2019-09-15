@@ -23,6 +23,22 @@ class BookingUtil {
         break;
       case "reminderPreferences":
         form = updateBooleanField(event, name, form, currentStep);
+
+        const checkboxOption = event.target.name;
+
+        if (checkboxOption === "noReminder") {
+          for (let option in form[currentStep][name]) {
+            if (option !== "noReminder") {
+              form[currentStep][name][option] = false;
+            }
+          }
+        } else {
+          for (let option in form[currentStep][name]) {
+            if (option === "noReminder") {
+              form[currentStep][name][option] = false;
+            }
+          }
+        }
         break;
       case "startTime":
         form[currentStep][name] = event.value;

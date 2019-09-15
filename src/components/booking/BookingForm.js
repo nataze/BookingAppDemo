@@ -52,7 +52,7 @@ class BookingForm extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.update({ key: "currentStep", value: 1 });
+    this.props.updateField({ key: "currentStep", value: 1 });
   }
 
   updateForm = (event, name) => {
@@ -65,10 +65,10 @@ class BookingForm extends React.Component {
   };
 
   handleNext = () => {
-    const { currentStep, update, updateObject } = this.props;
+    const { currentStep, updateField, updateObject } = this.props;
     if (currentStep < 2) {
       const nextStep = currentStep + 1;
-      update({ key: "currentStep", value: nextStep });
+      updateField({ key: "currentStep", value: nextStep });
       updateObject({ key: "errors", value: clone(this.noErrors) });
 
       this.setState({ stepHeader: this.stepHeaders[nextStep] });
@@ -104,23 +104,33 @@ class BookingForm extends React.Component {
     const state = this.props.currentStep;
     const currentStep = state > 0 ? state - 1 : state;
 
-    this.props.update({ key: "currentStep", value: currentStep });
+    this.props.updateField({ key: "currentStep", value: currentStep });
     this.setState({ stepHeader: this.stepHeaders[currentStep] });
+  };
+
+  getCheckboxValues = values => {
+    if (values) {
+      const result = Object.keys(values).map(innerField => values[innerField]);
+
+      return result;
+    } else {
+      return [];
+    }
   };
 
   render() {
     const { stepHeader } = this.state;
+    const firstStep = 1;
+    const lastStep = 2;
 
-    const { classes, employees, currentStep, form, errors } = this.props;
+    const { classes, currentStep, form, errors } = this.props;
 
     if (!form) return <Loading />;
-
-    if (currentStep === 2 && !Object.keys(employees).length) return <Loading />;
 
     return (
       <div className={classes.container}>
         <div>
-          {currentStep === 1 ? (
+          {currentStep === firstStep ? (
             <div className={classes.header}>NEW BOOKING</div>
           ) : (
             <div onClick={this.handleBack} className={classes.navigation}>
@@ -129,14 +139,13 @@ class BookingForm extends React.Component {
             </div>
           )}
         </div>
+
         <div className={classes.content}>
           <div className={classes.step}>{stepHeader}</div>
           <div className={classes.form}>
             {this.formFields[currentStep].map(field => {
               const value = form[currentStep][field.name];
-              const checkboxValues = value
-                ? Object.keys(value).map(innerField => value[innerField])
-                : [];
+              const checkboxValues = this.getCheckboxValues(value);
 
               return (
                 <FormField
@@ -158,9 +167,10 @@ class BookingForm extends React.Component {
             })}
           </div>
         </div>
+
         <div onClick={this.validateCurrentStep} className={classes.navigation}>
-          {currentStep === 2 ? "CREATE BOOKING" : "NEXT"}
-          {currentStep < 2 && <ArrowForwardIcon />}
+          {currentStep === lastStep ? "CREATE BOOKING" : "NEXT"}
+          {currentStep < lastStep && <ArrowForwardIcon />}
         </div>
       </div>
     );
@@ -180,7 +190,7 @@ const mapStateToProps = ({ bookingForm, employees }) => ({
 const mapDispatchToProps = dispatch => {
   return {
     fetchEmployees: () => dispatch.employees.fetchEmployees(),
-    update: payload => dispatch.bookingForm.update(payload),
+    updateField: payload => dispatch.bookingForm.updateField(payload),
     updateObject: payload => dispatch.bookingForm.updateObject(payload),
     setState: payload => dispatch.bookingForm.add(payload)
   };

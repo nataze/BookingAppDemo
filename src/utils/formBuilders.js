@@ -29,14 +29,14 @@ const generateFormState = fieldsObject => {
     errors: {}
   };
 
-  fieldsObject.forEach(object => {
-    const fieldType = object.fieldType;
-    const fieldName = object.name;
-    const fieldNames = object.names;
+  fieldsObject.forEach(obj => {
+    const fieldType = obj.fieldType;
+    const fieldName = obj.name;
+    const fieldNames = obj.names;
     if (fieldName) {
       switch (fieldType) {
         case "multipleCheckbox":
-          result["form"][fieldName] = boolField(object, []);
+          result["form"][fieldName] = boolField(obj, []);
           break;
         case "select":
           result["form"][fieldName] = "";
@@ -86,21 +86,17 @@ export const buildFormFields = fieldsObject => {
 const generateFormFields = fieldsObject => {
   // mainly to remove dynamic fields
   const result = [];
-  fieldsObject.forEach(object => {
-    if (
-      !object.isDynamic &&
-      !object.isHidden &&
-      !(object.name === "serviceType")
-    ) {
-      result.push(object);
+  fieldsObject.forEach(obj => {
+    if (!obj.isDynamic && !obj.isHidden && !(obj.name === "serviceType")) {
+      result.push(obj);
     }
   });
   return result;
 };
 
-const boolField = object => {
+const boolField = obj => {
   let result = {};
-  object.checkboxOptions.forEach((option, i) => {
+  obj.checkboxOptions.forEach((option, i) => {
     if (option === "sms") {
       return (result[option] = true);
     }

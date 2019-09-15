@@ -34,8 +34,8 @@ class DateTimeField extends React.Component {
   state = {
     value: moment(),
     selectedTimeSlot: {
-      name: "09:30 AM",
-      value: 1568565000
+      name: "02:45 PM",
+      value: 1568583900
     }
   };
 
