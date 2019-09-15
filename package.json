@@ -1,5 +1,6 @@
 {
   "name": "virtual-assistant",
+  "homepage": "https://nataze.github.io/BookingAppDemo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +8,7 @@
     "@material-ui/core": "3.7.1",
     "@material-ui/icons": "3.0.1",
     "@rematch/core": "1.0.6",
+    "gh-pages": "^2.1.1",
     "history": "^4.9.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.15",
@@ -31,8 +33,9 @@
     "analyze": "source-map-explorer build/static/js/main.*",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "proxy": "http://localhost:9000"
+  }
 }
