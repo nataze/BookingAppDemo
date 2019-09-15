@@ -23,7 +23,7 @@ const Routes = () => (
         <Switch>
           <Route
             exact
-            path="/"
+            path="/BookingAppDemo"
             render={props => (
               <AsyncComponent componentName="CalendarPage" {...props} />
             )}
