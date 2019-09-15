@@ -6,7 +6,7 @@ const styles = ({ spacing, palette, typography, breakpoints }) => ({
   button: {
     "&:hover": {
       backgroundColor: `${palette.secondary.main} !important`,
-      color: `${palette.text.alternate} !important`,
+      color: `${palette.text.white} !important`,
       opacity: "0.8 !important",
       cursor: "pointer !important"
     },
@@ -26,7 +26,7 @@ const styles = ({ spacing, palette, typography, breakpoints }) => ({
   },
   month: {
     fontWeight: "bold",
-    color: palette.text.secondary
+    color: palette.text.main
   },
   labelContainer: {
     display: "flex",
@@ -79,7 +79,7 @@ const styles = ({ spacing, palette, typography, breakpoints }) => ({
   menuItem: {
     "&:hover": {
       backgroundColor: palette.secondary.main,
-      color: palette.text.alternate
+      color: palette.text.white
     }
   }
 });

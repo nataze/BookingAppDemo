@@ -82,10 +82,6 @@ const styles = ({ spacing, typography, palette }) => ({
     width: "100%",
     fontWeight: "bold",
     fontSize: typography.normalFontSize,
-    // "&:hover": {
-    //   backgroundColor: palette.secondary.main,
-    //   color: palette.text.alternate
-    // },
     paddingLeft: 10 * spacing.unit,
     paddingRight: 10 * spacing.unit,
     color: palette.text.main

@@ -22,7 +22,7 @@ const styles = ({ spacing, palette, typography, breakpoints }) => ({
     minHeight: 40 * spacing.unit,
     maxHeight: 40 * spacing.unit,
     backgroundColor: palette.primary.main,
-    color: palette.text.alternate,
+    color: palette.text.white,
     fontWeight: "bolder",
     cursor: "pointer",
     paddingTop: 8 * spacing.unit,
@@ -37,7 +37,7 @@ const styles = ({ spacing, palette, typography, breakpoints }) => ({
     minHeight: 40 * spacing.unit,
     maxHeight: 40 * spacing.unit,
     backgroundColor: palette.primary.main,
-    color: palette.text.alternate,
+    color: palette.text.white,
     fontWeight: "bolder",
     paddingTop: 10 * spacing.unit
   },
@@ -47,7 +47,7 @@ const styles = ({ spacing, palette, typography, breakpoints }) => ({
   },
   step: {
     fontSize: typography.largeFontSize,
-    color: palette.text.secondary,
+    color: palette.text.main,
     fontWeight: "bold",
     textAlign: "center",
     marginTop: 12 * spacing.unit

@@ -11,11 +11,7 @@ const muiTheme = createMuiTheme({
     smallFontSize: 11,
     normalFontSize: 12,
     largeFontSize: 13,
-    largerFontSize: 14,
-    fontSize16: 16,
-    fontSize17: 17,
-    fontSize18: 18,
-    fontSize22: 22
+    largerFontSize: 14
   },
   spacing: {
     unit: 1
@@ -32,24 +28,11 @@ const muiTheme = createMuiTheme({
     text: {
       main: "#478181",
       white: "#ffffff",
-      alternate: "#ffffff",
-      secondary: "#478181",
       darkGrey: "#696969",
       lightgrey: "#bfbfbf",
-      info: "#547f7f",
-      close: "#447f7f",
-      sideBar: {
-        main: "#ffffff"
-      },
-      otherSideBar: {
-        main: "#478181"
-      }
+      info: "#547f7f"
     },
     background: {
-      sidebar: "#ffffff",
-      otherSideBar: {
-        main: "#edf7f7"
-      },
       main: "#edf7f7",
       content: "#f9f9f8",
       form: "#FDFAFA",

@@ -16,8 +16,6 @@ import { withStyles } from "@material-ui/core/styles";
 
 import CalendarToolbar from "./calendarToolbar";
 
-import "./calendar.css";
-
 const styles = () => ({
   container: {
     width: "100%"

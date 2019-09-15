@@ -1,5 +1,3 @@
-// TODO: to be moved to store
-
 export const companySetting = {
   eventDuration: 15,
   appointmentDuration: 15,
