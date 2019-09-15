@@ -14,7 +14,6 @@ import { companySetting } from "../../siteData";
 
 import { withStyles } from "@material-ui/core/styles";
 
-import { EventCard } from "./Components";
 import CalendarToolbar from "./calendarToolbar";
 
 import "./calendar.css";
@@ -81,12 +80,6 @@ class CalendarPage extends React.Component {
       selectedEmployeeName
     } = this.state;
 
-    const dateHeader = ({ label }) => {
-      const day =
-        label[0] === "0" && label.length > 1 ? label.substr(1) : label;
-      return <span style={{ cursor: "pointer" }}>{day}</span>;
-    };
-
     const CalendarToolbarWithProps = props => (
       <CalendarToolbar
         {...props}
@@ -96,13 +89,7 @@ class CalendarPage extends React.Component {
       />
     );
 
-    const components = {
-      event: EventCard,
-      toolbar: CalendarToolbarWithProps,
-      month: {
-        dateHeader: dateHeader
-      }
-    };
+    const components = { toolbar: CalendarToolbarWithProps };
 
     if (!setting) return null;
 

@@ -1,12 +1,9 @@
-### Virtual Assist
+### Booking App Demo
 
-Virtual assist is a smart booking system for booking anything from appointments, hotel booking to event shows for artists. It helps companies
-helps businesses automate their appointment bookings and sends out reminders to reduce cancellations. It also does much much more...
+This demo was extracted from a much larger application for booking services
 
-#### Features
+It contains the simple booking form that collects the clients information and booking time, with a mock api response
 
 #### Start
 
-To start app
-
-`docker-compose up --build`
+`yarn start`
