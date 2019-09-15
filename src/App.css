@@ -1,0 +1,168 @@
+/*
+Styling for Big Calendar module
+*/
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.text-fields {
+  -webkit-text-fill-color: #478181;
+}
+
+.rotate-arrow {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.rbc-calendar {
+  font-family: "Open Sans", sans-serif, "Roboto";
+}
+.rbc-toolbar-label {
+  font-weight: bold;
+  color: #478181;
+}
+.rbc-toolbar {
+  margin-bottom: 20px !important;
+}
+.rbc-toolbar button {
+  background-color: white;
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-right: 0.5px solid lightgrey !important;
+  text-transform: capitalize;
+  padding: 0px !important;
+}
+
+.rbc-toolbar .rbc-active {
+  background-color: #fe999e !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+.rbc-month-view {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.rbc-header {
+  background-color: white;
+  height: 35px;
+  padding-top: 10px !important;
+  padding-bottom: 5px !important;
+  font-weight: bold !important;
+  color: lightgrey;
+}
+.rbc-today {
+  background-color: #edf7f7 !important;
+}
+.rbc-row-content {
+  overflow-y: scroll;
+}
+.rbc-row-content {
+  z-index: 1;
+}
+.rbc-day-bg {
+  background-color: white;
+}
+.rbc-day-bg:hover {
+  background-color: #edf7f7 !important;
+  cursor: pointer !important;
+}
+.rbc-off-range-bg {
+  color: grey !important;
+  background-color: white !important;
+}
+.rbc-time-slot {
+  background-color: white;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.s-alert-box {
+  z-index: 5000000;
+}
+
+.rbc-event-label {
+  display: none !important;
+}
+
+.CalendarBooking > div {
+  width: auto !important;
+  font-size: 10px !important;
+}
+
+.CalendarBooking > div > div:nth-child(2) > div > div:nth-child(2) {
+  background-color: #fcf0f1 !important;
+  font-weight: bolder !important;
+}
+
+.CalendarOld > div > div:nth-child(1) {
+  display: none !important;
+}
+
+.CalendarOld > div > div:nth-child(2) > div > div:nth-child(1) {
+  font-weight: 900 !important;
+  color: #478181 !important;
+}
+.CalendarOld > div > div:nth-child(2) > div > div:nth-child(1) svg {
+  font-weight: 900 !important;
+  color: #478181 !important;
+}
+
+.CalendarOld > div > div:nth-child(2) > div > div:nth-child(1) button {
+  font-weight: 900 !important;
+  color: #478181 !important;
+}
+
+.CalendarOld > div > div:nth-child(2) > div > div:nth-child(2) {
+  font-weight: 900 !important;
+  color: #478181 !important;
+}
+
+.react-text-field > div::before {
+  border-bottom: none !important;
+}
+
+.react-select-root > div {
+  display: flex;
+  flex-grow: 1;
+  width: auto;
+}
+
+.SideBarForContent div:first-child {
+  left: auto !important;
+  z-index: 1 !important;
+  box-shadow: none !important;
+}

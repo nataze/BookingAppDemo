@@ -1,0 +1,120 @@
+const schedules = {
+  employees: {
+    "3": {
+      id: 14,
+      name: "Caneil",
+      owner: null,
+      daily_start_time: "9:00 AM",
+      daily_end_time: "04:00 PM",
+      break_start_time: "1:00 PM",
+      break_end_time: "01:45 PM",
+      weekly_availability: "monday tuesday wednesday thursday friday",
+      appointment_duration: "15",
+      company_id: 1,
+      created_at: "2017-12-24T02:06:02.133Z",
+      updated_at: "2018-12-25T16:15:54.405Z",
+      owner_type: "Employee",
+      owner_id: 3
+    },
+    "5": {
+      id: 17,
+      name: "Misty",
+      owner: null,
+      daily_start_time: "9:00 AM",
+      daily_end_time: "06:00 PM",
+      break_start_time: "1:00 PM",
+      break_end_time: "1:30 PM",
+      weekly_availability: "monday tuesday wednesday thursday friday",
+      appointment_duration: "15",
+      company_id: 1,
+      created_at: "2018-02-18T07:42:17.065Z",
+      updated_at: "2018-11-13T04:43:31.866Z",
+      owner_type: "Employee",
+      owner_id: 5
+    },
+    "4": {
+      id: 16,
+      name: "Moureen",
+      owner: null,
+      daily_start_time: "9:00 AM",
+      daily_end_time: "06:00 PM",
+      break_start_time: "1:00 PM",
+      break_end_time: "01:15 PM",
+      weekly_availability: "monday tuesday wednesday thursday friday",
+      appointment_duration: "15",
+      company_id: 1,
+      created_at: "2018-02-18T07:42:17.059Z",
+      updated_at: "2018-12-14T10:25:08.752Z",
+      owner_type: "Employee",
+      owner_id: 4
+    },
+    "7": {
+      id: 19,
+      name: "Nathaniel Abrams",
+      owner: null,
+      daily_start_time: "07:00 AM",
+      daily_end_time: "11:00 PM",
+      break_start_time: "1:00 PM",
+      break_end_time: "1:30 PM",
+      weekly_availability:
+        "monday tuesday wednesday thursday friday saturday sunday",
+      appointment_duration: "15",
+      company_id: 1,
+      created_at: "2018-12-25T16:24:39.108Z",
+      updated_at: "2018-12-25T16:24:39.108Z",
+      owner_type: "Employee",
+      owner_id: 7
+    },
+    "1": {
+      id: 11,
+      name: "Neil",
+      owner: null,
+      daily_start_time: "9:00 AM",
+      daily_end_time: "11:00 PM",
+      break_start_time: "1:00 PM",
+      break_end_time: "01:30 PM",
+      weekly_availability: "monday tuesday wednesday thursday friday",
+      appointment_duration: "15",
+      company_id: 1,
+      created_at: "2017-12-23T23:39:37.557Z",
+      updated_at: "2018-12-14T10:45:55.376Z",
+      owner_type: "Employee",
+      owner_id: 1
+    },
+    "2": {
+      id: 15,
+      name: "R.J.",
+      owner: null,
+      daily_start_time: "03:00 AM",
+      daily_end_time: "11:59 PM",
+      break_start_time: "1:00 PM",
+      break_end_time: "01:15 PM",
+      weekly_availability:
+        "monday tuesday wednesday thursday friday saturday sunday",
+      appointment_duration: "15",
+      company_id: 1,
+      created_at: "2018-02-18T07:42:17.046Z",
+      updated_at: "2019-02-04T05:18:37.270Z",
+      owner_type: "Employee",
+      owner_id: 2
+    },
+    "6": {
+      id: 18,
+      name: "Shianne",
+      owner: null,
+      daily_start_time: "9:00 AM",
+      daily_end_time: "5:00 PM",
+      break_start_time: "1:00 PM",
+      break_end_time: "01:20 PM",
+      weekly_availability: "monday tuesday wednesday thursday friday",
+      appointment_duration: "15",
+      company_id: 1,
+      created_at: "2018-02-18T07:42:17.071Z",
+      updated_at: "2018-12-14T10:11:02.356Z",
+      owner_type: "Employee",
+      owner_id: 6
+    }
+  }
+};
+
+export default schedules;
