@@ -1,5 +1,5 @@
 import Api from "../utils/api";
-import { fetchModelList, updateModel } from "./helper";
+import { fetchModelList } from "./helper";
 
 export default {
   state: {},
@@ -25,16 +25,6 @@ export default {
         "Schedules not fetched",
         dispatch.schedules.getAll,
         false
-      );
-    },
-    async updateSchedule(payload) {
-      return await updateModel(
-        dispatch,
-        payload,
-        Api.updateSchedule,
-        "Schedule successfully updated",
-        "",
-        dispatch.schedules.update
       );
     }
   })

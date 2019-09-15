@@ -131,10 +131,10 @@ export const validateEmail = (field, value) => {
 
 export const validatePhoneNumber = (field, value) => {
   try {
-    if (isMobilePhone(value, "any")) {
+    if (isMobilePhone(value.replace(/\D/g, ""), "en-CA")) {
       return true;
     }
-    throw { name: field, message: "Must be a valid mobile number" };
+    throw { name: field, message: "Must be a valid Canadian number" };
   } catch (e) {
     throw { name: field, message: `${e.message}` };
   }
