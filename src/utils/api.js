@@ -34,7 +34,7 @@ export default class Api {
     return Promise.resolve(mockResponse.serviceCategories);
   }
 
-  static async fetchFreeSlots() {
-    return Promise.resolve({ data: mockResponse.timeSlots });
+  static async fetchFreeSlots(startTime) {
+    return Promise.resolve({ data: mockResponse.timeSlots(startTime) });
   }
 }

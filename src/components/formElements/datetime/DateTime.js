@@ -40,7 +40,7 @@ class DateTimeField extends React.Component {
   };
 
   componentWillMount() {
-    this.props.getTimeSlots();
+    this.props.getTimeSlots(this.state.value);
   }
 
   componentDidUpdate(prevProps) {}
@@ -48,7 +48,9 @@ class DateTimeField extends React.Component {
   handleCalendarClick = (date, name) => {
     const newValue = moment(new Date(date));
 
-    this.setState({ value: newValue }, this.props.getTimeSlots);
+    this.setState({ value: newValue }, () => {
+      this.props.getTimeSlots(this.state.value);
+    });
     this.props.onChange({ value: date }, name);
   };
 
