@@ -114,7 +114,6 @@ class BookingForm extends React.Component {
   getCheckboxValues = values => {
     if (values) {
       const result = Object.keys(values).map(innerField => values[innerField]);
-
       return result;
     } else {
       return [];

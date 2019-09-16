@@ -1,52 +1,39 @@
 import * as cloneDeep from "lodash/cloneDeep";
+import * as mapKeys from "lodash/mapKeys";
+import * as map from "lodash/map";
+import * as isArray from "lodash/isArray";
+import * as camelCase from "lodash/camelCase";
+import * as snakeCase from "lodash/snakeCase";
+import * as startCase from "lodash/startCase";
+import * as isPlainObject from "lodash/isPlainObject";
+import * as mapValues from "lodash/mapValues";
 
 export const camelToUnderscore = original => {
-  // converts and object keys from camel to underscore
-  let result = {};
-  for (let camelKey in original) {
-    result[camelToUnderscoreKey(camelKey)] = original[camelKey];
-  }
-  return result;
+  return mapKeys(original, function(_, key) {
+    return camelCase(key);
+  });
 };
 
-export const underscoreToCamel = original => {
-  let result = {};
-  for (let underscoreKey in original) {
-    result[underscoreToCamelKey(underscoreKey)] = original[underscoreKey];
+export const underscoreToCamel = object => {
+  let camelCaseObject = cloneDeep(object);
 
-    // also camelcase inner objects or array of objects
-    const value = result[underscoreToCamelKey(underscoreKey)];
-    if (Array.isArray(value)) {
-      value.forEach((item, index) => {
-        if (typeof item === "object") {
-          for (let innerUnderscoreKey in item) {
-            result[underscoreToCamelKey(underscoreKey)][index][
-              underscoreToCamelKey(innerUnderscoreKey)
-            ] = original[underscoreKey][index][innerUnderscoreKey];
+  if (isArray(camelCaseObject)) {
+    return map(camelCaseObject, underscoreToCamel);
+  } else {
+    camelCaseObject = mapKeys(camelCaseObject, (value, key) => {
+      return camelCase(key);
+    });
 
-            if (innerUnderscoreKey.includes("_")) {
-              delete result[underscoreToCamelKey(underscoreKey)][index][
-                innerUnderscoreKey
-              ];
-            }
-          }
-        }
-      });
-    } else if (typeof value === "object") {
-      for (let innerUnderscoreKey in value) {
-        result[underscoreToCamelKey(underscoreKey)][
-          underscoreToCamelKey(innerUnderscoreKey)
-        ] = original[underscoreKey][innerUnderscoreKey];
-
-        if (innerUnderscoreKey.includes("_")) {
-          delete result[underscoreToCamelKey(underscoreKey)][
-            innerUnderscoreKey
-          ];
-        }
+    return mapValues(camelCaseObject, value => {
+      if (isPlainObject(value)) {
+        return underscoreToCamel(value);
+      } else if (isArray(value)) {
+        return map(value, underscoreToCamel);
+      } else {
+        return value;
       }
-    }
+    });
   }
-  return result;
 };
 
 export const removeElements = (object, keysToDelete) => {
@@ -60,11 +47,11 @@ export const removeElements = (object, keysToDelete) => {
 };
 
 export const camelToUnderscoreKey = key => {
-  return key ? key.replace(/([A-Z])/g, "_$1").toLowerCase() : "";
+  return key ? snakeCase(key) : "";
 };
 
 export const underscoreToCamelKey = key => {
-  return key ? key.replace(/(_\w)/g, m => m[1].toUpperCase()) : "";
+  return key ? camelCase(key) : "";
 };
 
 export const capitalize = word => {
@@ -72,12 +59,7 @@ export const capitalize = word => {
 };
 
 export const camelToSentence = word => {
-  if (word) {
-    const result = word.replace(/([A-Z])/g, " $1");
-    return result.charAt(0).toUpperCase() + result.slice(1);
-  } else {
-    return "";
-  }
+  return word ? startCase(word) : "";
 };
 
 export const clone = obj => {
