@@ -1,5 +1,4 @@
 import moment from "moment";
-import { companySetting } from "../siteData";
 
 const timeSlots = ({ startTime }) => {
   const start = moment(new Date(startTime));
